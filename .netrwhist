@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =3
+let g:netrw_dirhist_3='/etc'
+let g:netrw_dirhist_2='/root/docker-mirakurun-epgstation'
+let g:netrw_dirhist_1='/root'
+let g:netrw_dirhist_0='/root/docker-mirakurun-epgstation'
+let g:netrw_dirhist_9='/root/bin'
+let g:netrw_dirhist_8='/root'
+let g:netrw_dirhist_7='/root/docker-mirakurun-epgstation'
+let g:netrw_dirhist_6='/root/docker-openvpn-as/data/bin'
+let g:netrw_dirhist_5='/root/docker-openvpn-as/data'
+let g:netrw_dirhist_4='/root/docker-openvpn-as'
