@@ -64,10 +64,23 @@ set expandtab
 " タブをスペースに展開しない (expandtab:展開する)
 "set noexpandtab
 " 行頭以外の Tab 文字の表示幅 (スペースの数)
-set tabstop=2
-"set tabstop=8
+""set tabstop=2
+set tabstop=4
 " 行頭での Tab 文字の表示幅
-set shiftwidth=2
+"set shiftwidth=2
+set shiftwidth=4
+" ターミナルの設定に合わせて半透明を維持する
+if !has('gui_running')
+  augroup seiya
+    autocmd!
+    autocmd VimEnter,ColorScheme * highlight Normal ctermbg=none
+    autocmd VimEnter,ColorScheme * highlight LineNr ctermbg=none
+    autocmd VimEnter,ColorScheme * highlight SignColumn ctermbg=none
+    autocmd VimEnter,ColorScheme * highlight VertSplit ctermbg=none
+    autocmd VimEnter,ColorScheme * highlight NonText ctermbg=none
+  augroup END
+endif
+hi CursorLine   term=reverse cterm=none ctermbg=236
 " ------------------------------------------------------------
 "
 " 編集に関する設定:
@@ -86,6 +99,14 @@ set showmatch
 set wildmenu
 " テキスト挿入中の自動折り返しを日本語に対応させる
 set formatoptions+=mM
+" 括弧の補完
+"inoremap { {}<LEFT>
+"inoremap [ []<LEFT>
+"inoremap ( ()<LEFT>
+inoremap { {}<Left>
+inoremap {<Enter> {}<Left><CR><ESC><S-o>
+inoremap ( ()<ESC>i
+inoremap (<Enter> ()<Left><CR><ESC><S-o>
 " ------------------------------------------------------------
 "
 " 検索の挙動に関する設定:
@@ -117,9 +138,10 @@ if &term =~ "xterm"
   inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 
 endif
-"プラグイン管理
 
-
+"
+" プラグイン管理
+"
 
 if has('vim_starting')
    " 初回起動時のみruntimepathにneobundleのパスを指定する
@@ -131,6 +153,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 " インストールするプラグインをここに記述
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'scrooloose/nerdtree'
 
 
 call neobundle#end()
@@ -148,3 +171,4 @@ let g:neocomplcache_caching_percent_in_statusline = 1
 let g:neocomplcache_enable_skip_completion = 1
 let g:neocomplcache_skip_input_time = '0.5'
 "phpの辞書ファイルを作って指定する
+NeoBundleCheck
