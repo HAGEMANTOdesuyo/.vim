@@ -15,11 +15,11 @@ set lines=30
 set cmdheight=2
 "---------------------------------------------------------------------------
 " カラー設定:
-colorscheme molokai
+colorscheme monokai
 " IME ON時のカーソルの色を設定(設定例:紫)
 " カラースキーム設定の後に記述しないと反映されない
 highlight CursorIM guifg=NONE guibg=Purple
 "---------------------------------------------------------------------------
 " フォント設定:
-set guifont=Ricty_Diminished:h12:cSHIFTJIS
+"set guifont=Ricty_Diminished:h12:cSHIFTJIS
 
