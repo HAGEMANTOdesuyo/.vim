@@ -140,6 +140,10 @@ if &term =~ "xterm"
   inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 
 endif
+"
+"
+"
+command WSL terminal wsl
 
 "
 " プラグイン管理
