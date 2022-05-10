@@ -1,4 +1,5 @@
 /bundle/.neobundle
+/bundle/neobundle.vim
 /bundle/neocomplcache
 /bundle/nerdtree
 /bundle/NeoBundle.lock
