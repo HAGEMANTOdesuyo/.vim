@@ -28,5 +28,5 @@ highlight CursorIM guifg=NONE guibg=Purple
 highlight Visual term=reverse ctermbg=235 guibg=#403D3D
 "---------------------------------------------------------------------------
 " フォント設定:
-"set guifont=Ricty_Diminished:h12:cSHIFTJIS
+set guifont=Ricty_Diminished:h12:cSHIFTJIS
 
