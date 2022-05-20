@@ -9,6 +9,8 @@ set fenc=utf-8
 set nobackup
 " スワップファイルを作らない
 set noswapfile
+" undoファイルを作らない
+set noundofile
 " 編集中のファイルが変更されたら自動で読み直す
 set autoread
 " バッファが編集中でもその他のファイルを開けるようにする
@@ -143,12 +145,11 @@ if &term =~ "xterm"
   inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 
 endif
-"
-"
+" ------------------------------------------------------------
+" エイリアス
 "
 command WSL terminal wsl
-
-"
+" ------------------------------------------------------------
 " プラグイン管理
 "
 
@@ -164,7 +165,6 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'scrooloose/nerdtree'
 
-
 call neobundle#end()
 
 " ファイルタイプ別のプラグイン/インデントを有効にする
@@ -179,5 +179,4 @@ let g:neocomplcache_manual_completion_start_length = 0
 let g:neocomplcache_caching_percent_in_statusline = 1
 let g:neocomplcache_enable_skip_completion = 1
 let g:neocomplcache_skip_input_time = '0.5'
-"phpの辞書ファイルを作って指定する
 NeoBundleCheck
