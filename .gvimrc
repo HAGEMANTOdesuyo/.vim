@@ -14,7 +14,7 @@ set lines=30
 " コマンドラインの高さ(GUI使用時)
 set cmdheight=2
 " 半透明化
-autocmd GUIEnter * set transparency=215
+autocmd GUIEnter * set transparency=230
 "autocmd FocusGained * set transparency=230
 "autocmd FocusLost * set transparency=128
 "---------------------------------------------------------------------------
