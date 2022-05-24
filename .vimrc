@@ -53,7 +53,7 @@ set showcmd
 " タイトルを表示
 set title
 " 行末の1文字先までカーソルを移動できるようにする
-set virtualedit=onemore
+"set virtualedit=onemore
 " スマートインデントにする
 set smartindent
 "set visualbell
@@ -72,6 +72,13 @@ set tabstop=4
 " 行頭での Tab 文字の表示幅
 "set shiftwidth=2
 set shiftwidth=4
+" ファイルタイプ毎のインデント設定
+augroup fileTypeIndent
+  autocmd!
+  autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  autocmd FileType sh setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  autocmd FileType vim setlocal tabstop=2 shiftwidth=2 softtabstop=2
+augroup END
 " ターミナルの設定に合わせて半透明を維持する
 if !has('gui_running')
   augroup seiya
@@ -83,7 +90,12 @@ if !has('gui_running')
     autocmd VimEnter,ColorScheme * highlight NonText ctermbg=none
   augroup END
 endif
-hi CursorLine   term=reverse cterm=none ctermbg=236
+" カーソル行ハイライト
+hi cursorline   term=reverse cterm=none ctermbg=237
+" カーソル列ハイライト
+hi cursorcolumn   term=reverse cterm=none ctermbg=237
+" 選択行ハイライト設定
+highlight visual term=reverse ctermbg=237 guibg=#403d3d
 " ------------------------------------------------------------
 "
 " 編集に関する設定:
