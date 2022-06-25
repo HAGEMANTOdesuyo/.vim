@@ -155,6 +155,30 @@ if &term =~ "xterm"
   inoremap <special> <expr> <Esc>[200~ XTermPasteBegin("")
 
 endif
+"
+" IME切り替え設定
+"
+augroup im_select
+  autocmd!
+  autocmd InsertLeave * :call system('im-select com.apple.keylayout.ABC')
+  autocmd InsertEnter * :call system('im-select com.apple.keylayout.ABC')
+  autocmd BufRead * :call system('im-select com.apple.keylayout.ABC')
+  autocmd CmdlineLeave * :call system('im-select com.apple.keylayout.ABC')
+  autocmd CmdlineEnter * :call system('im-select com.apple.keylayout.ABC')
+augroup END
+"
+" MacVim固有の設定
+"
+if has('gui_macvim')
+  set showtabline=2	" タブを常に表示
+  set imdisable	" IMを無効化
+  set transparency=10	" 透明度を指定
+  set antialias
+  set guifont=HackGenNerd:h16
+  colorscheme molokai
+  set columns=100
+  set lines=25
+endif
 
 "
 " プラグイン管理
