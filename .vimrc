@@ -72,12 +72,16 @@ set tabstop=4
 " 行頭での Tab 文字の表示幅
 "set shiftwidth=2
 set shiftwidth=4
+" ファイルタイプ別のプラグイン/インデントを有効にする
+filetype plugin indent on
 " ファイルタイプ毎のインデント設定
 augroup fileTypeIndent
   autocmd!
   autocmd FileType markdown setlocal tabstop=2 shiftwidth=2 softtabstop=2
   autocmd FileType sh setlocal tabstop=2 shiftwidth=2 softtabstop=2
   autocmd FileType vim setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  "autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  "autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 augroup END
 " ターミナルの設定に合わせて半透明を維持する
 if !has('gui_running')
@@ -158,14 +162,16 @@ endif
 "
 " IME切り替え設定
 "
-augroup im_select
-  autocmd!
-  autocmd InsertLeave * :call system('im-select com.apple.keylayout.ABC')
-  autocmd InsertEnter * :call system('im-select com.apple.keylayout.ABC')
-  autocmd BufRead * :call system('im-select com.apple.keylayout.ABC')
-  autocmd CmdlineLeave * :call system('im-select com.apple.keylayout.ABC')
-  autocmd CmdlineEnter * :call system('im-select com.apple.keylayout.ABC')
-augroup END
+if !has('gui_macvim')
+  augroup im_select
+    autocmd!
+    autocmd InsertLeave * :call system('im-select com.apple.keylayout.ABC')
+    autocmd InsertEnter * :call system('im-select com.apple.keylayout.ABC')
+    autocmd BufRead * :call system('im-select com.apple.keylayout.ABC')
+    autocmd CmdlineLeave * :call system('im-select com.apple.keylayout.ABC')
+    autocmd CmdlineEnter * :call system('im-select com.apple.keylayout.ABC')
+  augroup END
+endif
 "
 " MacVim固有の設定
 "
@@ -178,6 +184,11 @@ if has('gui_macvim')
   colorscheme molokai
   set columns=100
   set lines=25
+  " 日本語入力の設定
+  set noimdisable
+  inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+  noremap <silent> i :set iminsert=0<CR>i
+  noremap / :set imsearch=0<CR>/
 endif
 
 "
@@ -191,12 +202,9 @@ endif
 
 " NeoBundleを初期化
 call neobundle#begin(expand('~/.vim/bundle/'))
-
 " インストールするプラグインをここに記述
 NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'scrooloose/nerdtree'
-
-
 call neobundle#end()
 
 " ファイルタイプ別のプラグイン/インデントを有効にする
