@@ -70,7 +70,6 @@ set expandtab
 ""set tabstop=2
 set tabstop=4
 " 行頭での Tab 文字の表示幅
-"set shiftwidth=2
 set shiftwidth=4
 " ファイルタイプ別のプラグイン/インデントを有効にする
 filetype plugin indent on
